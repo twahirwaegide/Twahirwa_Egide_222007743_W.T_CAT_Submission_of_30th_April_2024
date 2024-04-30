@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <style>
+        /* Styling for the page */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        section {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        form input[type="text"],
+        form input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        form input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .example {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+
+        .example h3 {
+            margin-bottom: 5px;
+        }
+
+        .example ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .example ul li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Admin Dashboard</h1>
+    </header>
+
+    <section id="manage-inventory">
+        <form id="manageInventoryForm" action="add_inventory.php" method="POST">
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" name="productName" placeholder="e.g., Apple" required>
+
+            <label for="productType">Product Type:</label>
+            <input type="text" id="productType" name="productType" placeholder="e.g., Fruit" required>
+
+            <label for="price">Price (per unit):</label>
+            <input type="number" id="price" name="price" min="0" step="0.01" placeholder="e.g., 2.50" required>
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="0" placeholder="e.g., 100" required>
+
+            <input type="submit" value="Add to Inventory">
+        </form>
+
+        <div class="example">
+            <h3>Example:</h3>
+            <ul>
+                <li>Product Name: Apple</li>
+                <li>Product Type: Fruit</li>
+                <li>Price: $2.50</li>
+                <li>Quantity: 100</li>
+            </ul>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('manageInventoryForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var productName = document.getElementById('productName').value;
+            var productType = document.getElementById('productType').value;
+            var price = parseFloat(document.getElementById('price').value);
+            var quantity = parseInt(document.getElementById('quantity').value);
+
+            console.log(`Product Name: ${productName}`);
+            console.log(`Product Type: ${productType}`);
+            console.log(`Price: $${price.toFixed(2)}`);
+            console.log(`Quantity: ${quantity}`);
+
+            // Submit form data via form's action URL
+            document.getElementById('manageInventoryForm').submit();
+        });
+    </script>
+</body>
+
+</html>
